@@ -1,0 +1,279 @@
+\documentclass[letterpaper,conference]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[x11names]{xcolor}
+\usepackage{ifsym}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+\begin{document}
+\title{Title}
+\author{Your Name\\\\Air Force Institute of Technology}
+\maketitle
+I have color-coded this template to show which sections are required for homeworks 4, 5 \& 6. When turning in HW4, please change your updated HW4 text to black, and retain the placeholder text for HW 5/6. Similarly, when turning in HW5, retain the placeholder text for HW6.  
+\begin{itemize}
+\item \color{Purple0}{Homework 4}
+\item \color{RoyalBlue3}{Homework 5}
+\item \color{Red1}{Homework 6}
+\end{itemize}
+\color{brown}{
+This template uses the IEEEtran \LaTeX $\:$template with the `conference' option to approximate the features of the WORD template for AFIT DASC 522.  It is unsupported, use at your peril. 
+}  
+  
+
+\color{Red1}
+\begin{abstract}\color{Red1}{
+Describe and motivate the problem. Mention your approach and list your key findings or results, along with why they are important. Include 7 or more numbers, such as number of datapoints, modeling metrics, or the benefits of the model. Compare the performance of the best model to the trivial model.  }
+\end{abstract}
+  
+\begin{IEEEkeywords} \color{Red1}{
+blah, blah, and blah}
+\end{IEEEkeywords}
+\color{black}
+Style notes:
+\emph{This applies to the WORD template.  The `itemize' environment will provide the \LaTeX $\:$ functionality.} 
+
+Please use the “IEEE para” style for each paragraph.  
+
+Be sure to use the “IEEE bullet” style below for any bullet points.
+\begin{itemize}
+\item{a}
+\item{b}
+\item{c}
+\item{d}
+\end{itemize}
+\color{Purple0}{
+\section{Introduction \& Background}
+
+Problem motivation
+
+Mission understanding, and background needed to understand the problem. Include 2-3 references.
+
+Your research question. This could be similar to “Using available data, how well can classical machine learning and neural network algorithms predict (describe output)?
+
+Your success criteria, which could include performance or the ability to generalize.
+}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=2.5in]{tfig1.png}
+\caption{\color{Purple0}{(using “IEEE caption” style) AFDTL positive drug result distribution, March – June 2020 [2]. Unlike this example, be sure to define any acronyms in the caption, if they aren’t previously identified in the text.}}
+\label{fig1}
+\end{figure}
+
+\begin{table}[!h]
+\begin{center}
+\caption{\color{Purple0}{Prior machine learning analyses in XYZ topic area}}
+\label{tab1}
+\begin{tabular}{ l  l  c c }
+\hline
+Description of work                        & Method   & Performance    & Ref\\
+                                                  & used      &                      &      \\
+\hline
+Prediction of THC use in college       & Decision &                       &      \\
+students using personality trait data & tree       & AUC = 0.75       & \cite{Chen1} \\
+Prediction of ecstasy use in military  & Neural   & Precision = 0.60 &      \\
+members using demographic data   & network & Recall = 0.70     & \cite{Prehoda1} \\
+Prediction of oxycodone abuse        & Random &                       &      \\
+based on surgery type                   & forest    & F1 = 0.60          & \cite{Ahmad1} \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\color{Purple0}{
+\subsection{Data Acquisition}
+A description of the process used to acquire your data, such as the originating office, survey or experiment.
+\subsection{Data Understanding}
+Perform relevant Data Understanding calculations and create visualizations, such as descriptive statistics, histograms or scatterplots.
+\begin{itemize}
+\item Include the most insightful 3 visualizations in your paper, along with an explanation.
+\item Include a table with the number of observations, features and distribution of your input and output variables. 
+\item If you are performing classification, address the number of classes, and if the class representations in the data are balanced, or unequally represented.
+\end{itemize}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=2.5in]{tfig2.png}
+\caption{\color{Purple0}{(a figure idea) Variable Histograms.}}
+\label{fig2}
+\end{figure}
+}
+\begin{table}[!h]
+\begin{center}
+\caption{\color{Purple0}{(a table idea) Feature Summary}}
+\label{tab2}
+\begin{tabular}{ l  l }
+\hline
+
+Input Variable                        & Data Distribution\\
+
+\hline
+
+Year of Launch                       & $\sim$ Uniform \\
+LV Type Flight Count               & $\sim$ Log-Normal \\
+LV Family Flight Count             & $\sim$ Log-Normal \\
+Org Flight Count                     & $\sim$ Log-Normal \\
+Country Flight Count               & $\sim$ Log-Normal \\
+Number of Liquid Stages          & $\sim$ Normal \\
+Number of Solid Stages           & $\sim$ Log-Normal \\
+Total number of stages            & $\sim$ Normal \\
+Number of boosters                & $\sim$ Log-Normal \\
+Length                                 & $\sim$ Normal \\
+Mass                                    & $\sim$ Normal \\
+Diameter                              & $\sim$ Log-Normal \\
+Country of Origin                   & Categorical \\
+Developer Experience             & Binary \\
+Vehicle Experience Level         & Binary \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\color{RoyalBlue3}{
+\section{Method}
+(use past tense for all, as if you have already done the work)
+
+A few introductory sentences.
+\subsection{Data Preparation}
+Document the methods that you used, such as transformations or filtering. If applicable, include up to 2 before/after figures showing the results of your data preparation.
+\subsection{Metrics}
+This example is for classification: ``In this analysis, the classification metrics of precision, recall and f1 are used to measure the performance of the classical and neural network models. In the dataset, the positive class is a food crisis. In the case of an actual food crisis, it is critical that a model prediction of no food crisis be avoided. As a result, recall is the most important metric, which helps to avoid false negatives. Precision was also selected, as accurate predictions of true positives are important, and f1 was chosen due to the unbalanced nature of the dataset where only 15.3\% of labels are positive.  These 3 metrics also facilitate a direct comparison to prior work.  In certain cases, the area under the receiver operating characteristic curve (AUC) and accuracy are also presented to highlight differences between models.''
+\subsection{Classic Modeling}
+Justify your selection of modeling variations, and briefly describe the algorithms. Variations could include different algorithms, adding or removing input variables, or transformations.
+
+Discuss the contributions of input variables to your model (z or p test).
+
+Document how you monitor to prevent overfitting, such as a train/validate split, or cross-validation. 
+\subsection{Neural Network Modeling}
+Justify your selection of optimization algorithm, loss function and regularization technique, based on the type of problem you are modeling (see concept map).
+
+Document how you monitor to prevent overfitting, such as a train/validate split, or cross-validation. Justify your selection, based on your number of datapoints and number of input variables.
+
+Discuss what hyperparameter sweeps you will perform, and what regularization technique you will explore. 
+
+\section{Analysis and Results}
+A few introductory sentences.
+
+\subsection{Classical Modeling}
+Document performance metrics for each modeling variation: 
+\begin{itemize}
+\item R2, MSE, and residual analysis for regression.
+\item Accuracy, precision, recall and area under the ROC curve (AUC) for classification.  For classification, if you have an unbalanced dataset it might be good to focus on the number of false negatives and false positives
+\end{itemize}
+Add a table that summarizes the metrics for your 3 variations. 
+\begin{itemize}
+\item If regression, also calculate metrics that would result if your model always predicted the mean of the labels
+\item If classification, also calculate metrics that would result if your model always predicted ``1'' and if it predicted randomly (chance).
+\end{itemize}
+Justify your selection of the best model.
+
+\begin{table}[!h]
+\begin{center}
+\caption{\color{RoyalBlue3}{(example) Logistic Regression Model Results. (note to class: the P-value selection, RGE and Select K Best are just examples – you can choose the modeling variations that you try)}}
+\label{tab2}
+\begin{tabular}{ l  c c c c c }
+\hline
+Model & P-val & AUC & Precision & Recall & Accuracy \\
+\hline
+Full	                  & 0.00	& 0.58 &0.73	& 0.18	& 0.86 \\
+P-value Selection	& 0.00	& 0.58	& 0.81	& 0.16	& 0.86 \\
+RFE	                  & 0.00	& 0.58	& 0.81	& 0.16	& 0.86 \\
+Select K Best	         & 0.00	& 0.59	& 0.75	& 0.20	& 0.87 \\
+Chance	             &  --	& 0.50	& 0.15	& 0.50	& 0.50 \\
+Always Predicts Crisis&	--	& --    &0.15 &	--	& 0.15 \\
+Never Predicts Crisis&	-- 	&-- 	&-- 	&--     & 0.85\\
+Goal	                 &--      &--	    & 0.85	& 0.75 & 0.90\\
+\hline 
+
+
+\end{tabular}
+\end{center}
+\end{table}
+\subsection{Neural Network Modeling}
+Document model performance that results from a hyperparameter (HP) sweep on neurons per layer, number of layers and 2 other hyperparameters. 
+
+Investigate how 1 regularization technique affects your best model, and document the results.
+
+Document performance metrics from your modeling similar to the classical section above. Include rows for:
+\begin{itemize}
+\item Preliminary NN model
+\item After HP sweep
+\item After regularization
+\end{itemize}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=2.5in]{tfig3.png}
+\caption{\color{RoyalBlue3}{Model performance resulting from hyperparameter sweep.}}
+\label{fig3}
+\end{figure}
+\color{Red1}
+\subsection{Model Evaluation}
+Evaluate the results of your efforts using the criteria established in homework \#4.  Assess the value of this effort to your organization.
+
+Discuss the final model selected, and why it is was selected.  
+
+Mention inferences that can be drawn from the modeling and from the data. Particularly insightful findings could be mentioned in your abstract and conclusion. 
+
+Include a figure that shows your model is not overfitting the data, or has an acceptable level of overfitting ($<10\%$)
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=2.5in]{tfig4.png}
+\caption{\color{Red1}{Neural network overfitting the dataset.}}
+\label{fig4}
+\end{figure}
+
+     (student example) “With significant capacity built into the model, there is a significant divergence between the training accuracy and the validation accuracy. This model is clearly overfitting the data. A reduced capacity model was then implemented, and the number of epochs was reduced to 100. The results are shown in Figure~\ref{fig5}.”
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=2.5in]{tfig5.png}
+\caption{\color{Red1}{Overfitting corrected by XYZ.}}
+\label{fig5}
+\end{figure}
+
+\subsection{Model application (a.k.a. deployment)}
+Talk the audience through a simple application of your model.  
+
+How can it be used to further the mission of your organization?  This could include:
+\begin{itemize}
+\item Qualitative applications: 
+\begin{itemize}
+\item[$\circ$] mention how you could apply inferences from classical modeling - here is an example from an AF Drug Testing Lab student:
+\item[$\circ$] Inference “younger, less educated individuals who exhibit sensation seeking behavior and are open to experience tend to be at higher risk for THC use”
+\item[$\circ$] Application: we recommend a personality survey for new employees, and focus drug prevention efforts on those at highest risk for TCH use 
+\end{itemize}
+\item Quantitative applications: 
+\begin{itemize}
+\item[$\circ$] how can you best use the prediction of the model to make a decision?
+\item[$\circ$] You could create an excel (or Python) analysis showing how a decision could be made
+\item[$\circ$] Be sure to mention the impact of that decision (i.e. we could save \$500K, avoid 20\% of space launch failures, or predeploy food aid to areas that have the highest risk for a food crisis
+\end{itemize}
+\end{itemize}
+
+\section{Conclusion}
+Restate main points, and avoid adding new information.
+
+}
+\color{Purple0}
+
+\begin{thebibliography}{1}
+
+\bibitem{Chen1}
+G. Chen, Z. D. Dong, D. J. Hill, G. H. Zhang and K. Q. Hua, ``Attack Structural vulnerability of power grids: A hybrid approach absed on complex networks'' in \textit{Physica A: Statistical Mechanics and its Applications}, vol. 389, no. 3, pp. 595-603, 2010. 
+
+\bibitem{Prehoda1}
+E. W. Prehoda, C. Schelly and J. M. Pearce,``US strategic solar photovoltaic-powered mircrogrid deployment for enhanced national security,'' in \textit{Renewable and Sustainable Energy Reviews}, vol. 78, pp. 167-175, 2018. 
+
+\bibitem{Ahmad1}
+M. Ahmad, Operation and Control of Renewable Energy Systems, Hoboken: Wiley, 2017. 
+
+\end{thebibliography}
+Note to instructor: I am using the \BibTeX $\:$ bibliography tool.
+\end{document}
