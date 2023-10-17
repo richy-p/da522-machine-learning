@@ -80,3 +80,27 @@
 * Regularization via Pruning
 * Trees vs. Linear Models
 * Advantages and Disadvantages of Trees
+
+
+---
+# Week 3
+# Clustering overview and k-means fundamentals
+* Python Scikit-Learn API
+* Overview of 10 Python Clustering Methods
+* Clustering Taxonomy
+* K-means Clustering
+
+# K-means Python demo & clustering considerations 
+* Demo
+* K-means Pro and Con
+* Algorithm Comparison
+
+# Hierarchical clustering and k-means / hierarchical clustering Python file
+* Linkage Methods
+* Threshold Determination
+
+# Principal components analysis & anomaly detection and anomaly detection Python file 
+* Computational Complexity
+* "Scree" plots
+* Anomaly Detection Application
+
