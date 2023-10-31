@@ -104,3 +104,130 @@
 * "Scree" plots
 * Anomaly Detection Application
 
+---
+# Week 4
+https://aueems.cce.af.mil/courses/9884/pages/week-4-overview
+## Readings
+* RAND report - DoD AI Posture Download RAND report - DoD AI Posture(skim) 
+* ISLP & HOML readings assigned on last page of syllabus
+
+## Videos
+### Best stepwise selection
+* Brute force approach
+* Comparing models - Cp, AIC, BIC, Adjusted R2
+* Python file: 4 Week 4A feature_selection_expanded with BIC and RFE v3.ipynbDownload 4 Week 4A feature_selection_expanded with BIC and RFE v3.ipynb
+    * Please note: in the video this file has the name "feature selection expanded.ipynb"
+* Python dataset: UScrime 2.csvDownload UScrime 2.csv
+### Forward & backward stepwise selection (amended) 
+* Method
+* Computational efficiencies
+* Python file and dataset: same as above (Week 4A...)
+### L1 (Lasso) & L2 (Ridge) Regularization 
+* Penalty functions
+* Impact on coefficients
+* Bias / Variance tradeoff
+###  L1 & L2 Regularization Python demo
+* Python file: 4 Ridge_and_Lasso_from_ISLR_Chapter_6 v2.ipynbDownload 4 Ridge_and_Lasso_from_ISLR_Chapter_6 v2.ipynb
+* Python dataset: Hitters datasets.zipDownload Hitters datasets.zip
+### Dimension reduction with Principal Components Regression (PCR)
+* Theory
+* Python file and dataset: same as above (Ridge_and_Lasso...)
+### Dimension reduction with Partial Least Squares Regression (PLS)
+* Comparison with PCR
+* Literature example
+* Python file and dataset: same as above (Ridge_and_Lasso...)
+### Natural language processing - NLP - Feature selection on the English language
+* Python file: 4G_NLP_demo_v4.ipynbDownload 4G_NLP_demo_v4.ipynb
+* Python dataset: NLP Training data.csv
+
+## Lecture slides
+
+Combined  3.week 4 slidesDownload Combined week 4 slides
+Natural language processing slidesDownload Natural language processing slides
+ 
+
+## Bonus material - NLP
+
+A few students in prior sections used NLP for their analysis, either on its own, or in addition to numeric/categorical variables, and I've attached a few of their papers.  NLP is fairly advanced and if you are feeling very comfortable with python and general machine learning, it could be a good way to enhance your learning experience.  It definitely isn't required in this course.  
+
+NLP TMT DASC 522 Final Paper.docx  (just NLP)
+
+NLP Audit cycle time DASC 522 Final Paper.docx (NLP, numeric & categorical variables)
+ 
+
+## Bonus material - plot format
+
+It can take a lot of time to make your figures look good (and be legible) in a two-column  journal template for the final project. You'll need to adjust various font sizes, the background color and other attributes.
+In an effort to save you time, I've attached a python script that looks good in a two-column format. It consolidates a few stack overflow posts on the topic, and allows you to easily fine-tune your figures.
+Standard plot format.ipynb
+
+
+# Week 5
+## Reading
+
+* ISLP & HOML readings assigned on last page of syllabus
+* DASC 522 Guide to Hyperparameter (HP) Selection
+    * This guide summarizes the main neural network HPs that you'll learn about in the next 5 weeks, and offers recommendations for what values to initially select based on your problem type and other factors.  
+    * However, since every dataset is unique, numerous departures from these starting points may be required to find the best performance. The guide is organized into 3 areas:
+        * Structure: the HPs you set when you create your NN with model = keras.Sequential( ...layers neurons blah blah blah )
+        * Fit:            the HPs you set when you use model.fit( ...code here )
+        * Compile:   the HPs you set when you use model.compile( ...code here )
+ 
+
+## Lecture videos
+
+### NN foundations 
+* Introduction to Keras
+* Python demo - Pima Indians Classification (*not "regression" per the python file title)
+* NN visualization
+* Overfitting
+
+
+### Perceptron overview
+* NN structure & types of learning
+* Activation functions
+* Difference between perceptron vs. NN
+* Backpropagation
+
+### Perceptrons & perceptron learning
+* Perceptron components
+* Application to logic problems
+* Perceptron learning vs. gradient descent
+
+### Multilayer perceptrons (a.k.a. NN)
+* Structure vs performance
+* Hyperparameter introduction
+* Notable example NNs: image recognition, Siri, AlphaGo, self-driving car
+ 
+
+## Lecture slides & python files
+
+* NN foundations & Perceptron overview
+    * 5A Pima Indian classification.ipynb  and dataset
+* Perceptrons & perceptron learning
+* Multilayer perceptrons and excel calculation file
+ 
+
+## Bonus material - plotting histograms of numeric variables
+
+Here is a code snippet to create the histograms that are shown in the Homework #4 project template. 
+
+The histograms use the Seaborn library (sns), which is an extension of python's Matplotlib plotting library. 
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+sns.set_theme(style='darkgrid')  # set plotting style
+df2 = df[['THC', 'Age', 'Education', 'Nscore', 'Escore', 'Oscore', 'Ascore','Cscore', 'Impulsive', 'SS']]  # 10 variables in the dataframe
+axes = df2.plot.hist(subplots=True, 
+                     layout=(5, 2),  # 5 x 2 grid of plots
+                     figsize=(12,12), 
+                     legend=True,
+                     cmap='viridis',  # colormap to look nice
+                     fontsize=12)
+```
+
+
+
