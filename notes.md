@@ -229,5 +229,188 @@ axes = df2.plot.hist(subplots=True,
                      fontsize=12)
 ```
 
+---
+# Week 6 Overview
+## Readings
+* ISLP & HOML readings assigned on last page of syllabus
+ 
+## Lecture videos (Python demonstrations in all)
+### Backpropagation
+* Fundamentals
+* Batch Size
+* Widrow's Rule of Thumb for total neuron count: Widrow ROT Number of points required.xlsx 
+* "Early stopping" to improve performance
+
+### Optimization part 1 
+* Loss functions
+* Optimizer algorithms
+* Learning parameters
+
+### Optimization part 2 
+* Batch normalization
+* Weight & bias initialization
+* The impact of feature normalization on NN performance
+
+### Resampling part 1 
+* Train/validation/test split
+* Leave-one-out cross-validation (LOOCV)
+
+### Resampling part 2 
+* k-fold cross validation
+* k-fold vs LOOCV
+* Bias & variance tradeoff
+
+## Python files
+* 6A Early Stopping.ipynb
+* 6B Optimization v2.ipynb 
+* 6C_Resampling_&_Cross_Validation_v3.ipynb 
+* Lectures refer again to the 5A Pima Indian classification.ipynb & dataset - they are located in Week 5
+
+## Lecture slides
+* Backpropagation
+* Combined Optimization
+* Combined Resampling
+ 
+
+## Bonus material
+
+A "must" when applying machine learning techniques to real problems (i.e. your final project) is to validate your models.  Without this key step, your model may give the impression of accuracy, but then fail to perform when it is first used.
+
+For classical techniques (regression, logistic regression, decision trees etc) a two-way train/holdout split is good.
+
+For neural networks a 3 way split is needed, since the training routine uses both the train & test sets, and (generally) a large number of sweeps and models are created.  This can result in overfitting of the test set, requiring a third (holdout) set to validate the model.  Ideally, after creating a large number of NN models, you'll select only a handful to check against the holdout set.
+
+There are lots of ways to do this, but here are some. In my projects I tend to use the #1 two-way split for classical, and then use those same datasets in #4 for NN:
+
+### 1) Two-way split - split after create X/y - 70/30 split. THC is the label
+```python
+from sklearn.model_selection import train_test_split
+X = df2.loc[:, df2.columns != 'THC']
+y = df2.loc[:, df2.columns == 'THC']
+
+X = sm.add_constant(X)   # only needed for sm (not smf)
+
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.3, random_state=0) #random state is a seed value used to reproduce your split later
+
+print(X_train.shape, X_val.shape)
+print(y_train.shape, y_val.shape)
+```
+
+### 2) Two-way split - split before create X/y - 70/30 split. Length is the label
+```python
+# split into 2 dataframes
+df_train=df.sample(frac=0.8,random_state=42) 
+df_val=df.drop(train.index)
+
+# model on train set
+model=smf.ols('Length~Width', df_train).fit()
+print(model.summary2())
+
+# split train/test into X_train, y_train & X_test, y_test
+X_train = df_train['Width']
+y_train = df_train['Length']
+X_val = df_val['Width']
+y_val = df_val['Length']
+
+ 
+# compare MSE for train and test sets
+y_pred_train = model.predict(X_train)
+y_pred_val = model.predict(X_val)
+RMSE_train = mean_squared_error(y_train, y_pred_train)
+RMSE_val = mean_squared_error(y_val, y_pred_val)
+ ```
+
+### 3) Three-way split - separate variables - this gives a 70/15/15 split. y is the label
+```python
+from sklearn.model_selection import train_test_split
+# 1st split - remove 15% for validation (holdout)
+X_splitAgain, X_val, y_splitAgain, y_val = train_test_split(X, y, test_size=0.15, random_state=42) 
+
+# 2nd split
+X_train, X_test, y_train, y_test = train_test_split(X_splitAgain, y_splitAgain, test_size=0.1763, random_state=42) 
+
+print('Train set shape\n',X_train.shape, y_train.shape)
+print('Test set shape\n',X_test.shape, y_test.shape)
+print('Val set shape\n',X_val.shape, y_val.shape)
+print(' ')
+ ```
+### 4) Three way split using built-in "validation_split" in NN fitting function  
+a) split data into train & validation/holdout sets using a two-way method from #1 above  
+b) use the validation_split method of .fit to automatically split the training dataset into train & test datasets 
+```python
+history = dnn_model.fit(train_features, 
+                        train_labels,
+                        validation_split=0.2,
+                        epochs=100)
+```
 
 
+---
+# Week 7 Overview
+## Readings
+* HOML reading assigned on last page of syllabus
+* Journal article: Types of minority class examples and their influence on learning classifiers from imbalanced dataDownload Types of minority class examples and their influence on learning classifiers from imbalanced data
+ 
+
+## Lecture videos (all are Python demonstrations)
+### Neural Network (NN) Regression part 1 Download Neural Network (NN) Regression part 1 
+* Demonstration that the weight & bias of a single-perception NN match the y=mx+b prediction of classical linear regression
+* Single-variable regression using conventional & deep NNs
+## NN Regression part 2 Download NN Regression part 2 (updated)
+* Multiple-variable regression using conventional & deep NNs
+* Demonstration of how normalization is essential for NN training
+* Comparison to classical linear regression
+### Neural Network ClassificationDownload Neural Network Classification
+* Accuracy, precision & recall
+* Threshold variation, ROC curve & AUC
+* Introduction to hyperparameter tuning using classification threshold
+### Hyperparameter tuning Download Hyperparameter tuningof model structure, compilation & fit parameters via 3 methods
+* Hand-code
+* Scikit-learn GridSearchCV
+* “Weights & Biases” framework interface
+* Hyperparameter tuning concept map.jpg
+
+ 
+## Lecture Python files
+* There are no powerpoint files this week
+* 7A NN Regression tensorflow example v2.ipynb Download 7A NN Regression tensorflow example v2.ipynb   7A NN Regression tensorflow example.ipynb
+* 7B GMLC Binary Classification v2.ipynbDownload 7B GMLC Binary Classification v2.ipynb
+* 7C v2 NN Hyperparameter Search - Classification.ipynbDownload 7C v2 NN Hyperparameter Search - Classification.ipynb
+* 5A pima-indians-diabetes.data.csvDownload 5A pima-indians-diabetes.data.csv
+ 
+## Bonus material
+There are two main ways of setting up your model & layers:
+
+1. (recommended) Using the TensorFlow.Keras methods featured in the class demos. Any categorical inputs need to be one-hot encoded prior to modeling, as the model assumes all input have a numeric datatype (float/int/boolean).  The TensorFlow certification that I earned uses these methods, and I've used these methods for all of my machine learning projects.
+2. (not recommended) Using the TensorFlow  feature_column/feature_layer methods to specify datatypes prior to modeling.  I have heard this is often used when setting up a web-facing end-to-end machine learning pipeline.  The process is described in this article Download this article. 
+ 
+Here are code snippets to show the differences between the methods:
+1)  ------------------ used in class demos
+```python
+normalizer = preprocessing.Normalization()
+normalizer.adapt(np.array(train_features))
+number_of_inputs= train_features.shape[1]
+model = keras.Sequential([normalizer,
+                          layers.Dense(16, activation='relu', input_dim=number_of_inputs),
+                          layers.Dense(16, activation='relu'),
+                          layers.Dense(1, activation='linear') ]) # output layer for regression
+
+model.compile(...
+history = model.fit(...
+```
+
+2) ---------------- Tensorflow feature_column/feature_layer notation
+* Create a utility method to convert your dataframe into a tf.data dataset
+* Create an input pipeline
+* For each feature column
+    * Create a feature_column based on its datatype (and add normalizer for each) based on https://www.tensorflow.org/tutorials/structured_data/feature_columns (Links to an external site.)
+    * Append that feature to a TensorFlow feature_layer
+```python
+model = keras.Sequential([feature_layer,
+                          layers.Dense(16, activation='relu', input_dim=number_of_inputs),
+                          layers.Dense(16, activation='relu'),
+                          layers.Dense(1, activation='linear') ]) # output layer for regression
+
+model.compile(...
+history = model.fit(...
+```
